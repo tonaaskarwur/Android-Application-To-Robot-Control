@@ -1,16 +1,14 @@
 # Overview
 
-Android application to wireless robot control. The application is built in Python based on the kivy library. It allows you to control a mobile robot built specifically for this project. The application consists of the main menu, selection of control, manual control, control by draw a route for robot and a window for drawing the robot's speed and direction.
+Android application to wireless robot control. The application is built in Python based on the kivy library. It allows you to control a mobile robot built specifically for this project. The application consists of the main menu, selection of control, manual control, control by draw a route for robot and a window for displaying the robot's speed and direction.
 
 ## Application build
 
 The easiest way is to install the file myapp-0.1-debug.apk.
 
-If you want to change something in the code, you have to build the application again. The buildozer tool is used for this. Instruction on how to use the tool is available at this link [Buildozer](https://github.com/kivy/buildozer).
+If you want to change something in the code, you have to build the application again. The buildozer tool is used for this. Instruction on how to use the buildozer tool is available at this link [Buildozer](https://github.com/kivy/buildozer). Use "Installing Buildozer with target Python 3" section. If you want to use Python 2 you have to delete python3crystax from requirements in *buildozer.spec* file
 
 **When building the application, replace the generated *buildozer.spec* file with the one from this repository. If you don't do this, the application will not work correctly.**
-
-**Use "Installing Buildozer with target Python 3" section. If you want to use Python 2 you delete python3crystax from requirements in *buildozer.spec* file**
 
 **To build the application use the Cython version == 0.25.2. It may not work with newer versions.**
 
@@ -18,7 +16,7 @@ If you want to change something in the code, you have to build the application a
 
 First, run app_server.py on RaspberryPi. The console displays the address where the server listens for connections.
 
-In mobile appplication after pressing the WI-Fi logo, it is possible to connect to the server that is on the robot. After the correct connection, the tick icon will appear. In the MANUAL CONTROL tab, you can set the speed of the robot, the direction of movement, turn on the indicator and change the turn by rotating the phone. In the AUTO CONTROL tab you can draw a route that the robot has to drive. In the DATABASE tab, after clicking on the database icon, the speed and direction of the robot will be drawn.
+In mobile appplication after pressing the WI-Fi logo, it is possible to connect to the server that is on the robot. After the correct connection, the tick icon will appear. In the MANUAL CONTROL tab, you can set the speed of the robot, the direction of movement, turn on the indicator and change the robot's turn by rotating the phone. In the AUTO CONTROL tab you can draw a route that the robot has to drive. In the DATABASE tab, after clicking on the database icon, the speed and direction of the robot will be drawn.
 
 ### Images
 
