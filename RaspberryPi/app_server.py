@@ -252,28 +252,28 @@ def dist_sens_loop():
 
 		#FRONT SENSOR
 
-				# set trigger to HIGH
+		# set trigger to HIGH
 		GPIO.output(trigger, True)
 
-				# set trigger after 0.01ms to LOW
+		# set trigger after 0.01ms to LOW
 		time.sleep(0.00001)
 		GPIO.output(trigger, False)
 
 		StartTime = time.time()
 		StopTime = time.time()
 
-				# save StartTime
+		# save StartTime
 		while GPIO.input(echo_fr) == 0:
 			StartTime = time.time()
 
-				# save time of arrival
+		# save time of arrival
 		while GPIO.input(echo_fr) == 1:
 			StopTime = time.time()
 
-				# time difference between start and arrival
+		# time difference between start and arrival
 		TimeElapsed = StopTime - StartTime
 
-				# multiply with the sonic speed (34300 cm/s)
+		# multiply with the sonic speed (34300 cm/s)
 		# and divide by 2, because there and back
 		distance = (TimeElapsed * 34300) / 2
 
@@ -383,8 +383,9 @@ def do_Encoder(channel):
 		Encoder_Count -= 1
 	else:
 		Encoder_Count += 1
-
-GPIO.add_event_detect(encoderA, GPIO.FALLING, callback=do_Encoder)   # Enable interrupt
+		
+# Enable interrupt
+GPIO.add_event_detect(encoderA, GPIO.FALLING, callback=do_Encoder)
 		
 try:
 
