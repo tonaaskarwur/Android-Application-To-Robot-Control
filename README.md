@@ -10,6 +10,8 @@ If you want to change something in the code, you have to build the application a
 
 **When building the application, replace the generated file *buildozer.spec* with the one from this repository. If you don't do this, the application will not work correctly**
 
+**To build the application use the Cython version == 0.25.2. With newer versions, the compilation may not run correctly**
+
 ## How to use
 
 First, run app_server.py on RaspberryPi. The console displays the address where the server listens for connections.
@@ -33,6 +35,7 @@ In mobile appplication after pressing the WI-Fi logo, it is possible to connect 
 * [Pillow](https://pillow.readthedocs.io/en/stable/) - Imaging Library
 * [Plyer](https://plyer.readthedocs.io/en/latest/#) - Library for accessing features of your hardware / platforms
 * [Pyjnius](https://pyjnius.readthedocs.io/en/latest/) - Library for accessing Java classes
+* [Cython](https://cython.org) - Optimising static compiler for both the Python programming language and the extended Cython programming language
 
 ### To run server on RaspberryPi
 
