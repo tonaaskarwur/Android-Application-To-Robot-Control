@@ -1,0 +1,235 @@
+<Background_IMG@Image>
+	source: 'Img/background.jpg'
+	allow_stretch: False
+	keep_ratio: True
+	size_hint: 1.0, 1.0
+
+<MyImage@Image>
+	allow_stretch: False
+	keep_ratio: True
+
+<MenuButton@MenuImageButton>
+	source: 'Img/button.png'
+	size_hint: 0.5, 0.13
+	allow_stretch: False
+	keep_ratio: True
+
+<ArrowButton@ArrowImageButton>
+	source: 'Img/back_arrow.png'
+	size_hint: 0.15, 0.15
+	pos_hint: {"center_x": 0.9, "center_y": 0.75}
+	allow_stretch: False
+	keep_ratio: True
+
+<GoButton@GoImageButton>
+	source: 'Img/go.png'
+	size_hint: 0.5, 0.13
+	allow_stretch: False
+	keep_ratio: True	
+
+<MenuScreen>:
+	on_pre_enter: root.check_wifi_status()
+	FloatLayout:
+		Background_IMG
+
+		MyImage:
+			source: 'Img/robo_app.png'
+			pos_hint: {"center_x": 0.5, "center_y": 0.78}
+			size_hint: 0.25, 0.25
+
+		MenuButton:
+			pos_hint: {"center_x": 0.5, "center_y": 0.63}
+			on_release:
+				root.manager.transition.direction = "left"
+				root.manager.current = "choose_control"	
+
+		MyImage:
+			source: 'Img/control_text.png'
+			pos_hint: {"center_x": 0.5, "center_y": 0.63}
+			size_hint: 0.2, 0.2
+
+		MenuButton:
+			pos_hint: {"center_x": 0.5, "center_y": 0.43}
+			on_release:
+				root.manager.transition.direction = "right"
+				root.manager.current = "database"
+
+		MyImage:
+			source: 'Img/database_text.png'
+			pos_hint: {"center_x": 0.5, "center_y": 0.43}
+			size_hint: 0.2, 0.2
+
+		MenuButton:
+			pos_hint: {"center_x": 0.5, "center_y": 0.23}
+			on_release:
+				root.exit_app()
+
+		MyImage:
+			source: 'Img/exit_text.png'
+			pos_hint: {"center_x": 0.5, "center_y": 0.23}
+			size_hint: 0.15, 0.15
+
+		WifiImageButton:
+			source: 'Img/wifi.png'
+			pos_hint: {"center_x": 0.85, "center_y": 0.8}
+			size_hint: 0.15, 0.15
+			allow_stretch: False
+			keep_ratio: True
+			on_release: 
+				root.open_popup()
+
+<ChooseControlScreen>:
+	FloatLayout:
+		Background_IMG
+		
+		ArrowButton:
+			on_release: 
+				root.manager.transition.direction = "right"
+				root.manager.current = "menu"
+
+		MenuButton:
+			pos_hint: {"center_x": 0.5, "center_y": 0.63}
+			on_release:
+				root.manager.transition.direction = "down"
+				root.manager.current = "manual_control"	
+
+		MyImage:
+			source: 'Img/manual_text.png'
+			pos_hint: {"center_x": 0.5, "center_y": 0.63}
+			size_hint: 0.2, 0.2
+
+		MenuButton:
+			pos_hint: {"center_x": 0.5, "center_y": 0.43}
+			on_release:
+				root.manager.transition.direction = "up"
+				root.manager.current = "auto_control"	
+
+		MyImage:
+			source: 'Img/auto_text.png'
+			pos_hint: {"center_x": 0.5, "center_y": 0.43}
+			size_hint: 0.15, 0.16
+
+<ManualControlScreen>:
+	on_enter: 
+		root.run_all()
+	on_pre_leave: 
+		root.disable_all()
+	FloatLayout:
+		Background_IMG
+
+		ArrowButton:
+			on_release: 
+				root.manager.transition.direction = "up"
+				root.manager.current = "choose_control"
+		
+		MyImage:
+			source: 'Img/speed.png'
+			pos_hint: {"center_x": 0.15, "center_y": 0.75}
+			size_hint: 0.25, 0.25
+			
+		Slider:
+			id: speed
+			orientation: 'vertical'
+			size_hint: 0.1, 0.5
+			pos_hint: {"center_x": 0.15, "center_y": 0.45}
+			min: 0
+			max: 100
+			value: 0
+			step: 1
+			on_value: root.read_slider(*args)
+
+		MyImage:
+			source: 'Img/indicator.png'
+			pos_hint: {"center_x": 0.705, "center_y": 0.35}
+			size_hint: 0.25, 0.25
+
+		ToggleButton:
+			group: 'arrows'
+			size_hint: 0.15, 0.15
+			pos_hint: {"center_x": 0.60, "center_y": 0.25}
+			color: 0, 0, 0, 0
+			background_color: 0, 0, 0, 0
+			on_press: root.active_left_arrow(self, self.state)
+
+		ToggleButton:
+			group: 'arrows'
+			size_hint: 0.15, 0.15
+			pos_hint: {"center_x": 0.80, "center_y": 0.25}
+			color: 0, 0, 0, 0
+			background_color: 0, 0, 0, 0
+			on_press: root.active_right_arrow(self, self.state)
+
+		MyImage:
+			source: 'Img/direction.png'
+			pos_hint: {"center_x": 0.7, "center_y": 0.60}
+			size_hint: 0.25, 0.25
+
+		Button:
+			background_color: 0, 0, 0, 0
+			pos_hint: {"center_x": 0.70, "center_y": 0.48}
+			size_hint: 0.15, 0.15
+			on_press: root.check_press()
+
+<AutoControlScreen>:
+	on_leave:
+		painter.canvas.clear()
+	on_enter:
+		painter.enter_drawing_window()
+	Painter:
+		id: painter
+	FloatLayout:
+		canvas.before:
+			Color:
+				rgba: 0.5, 0.5, 0.5, 0.5
+			Rectangle:
+				pos: self.pos
+				size: self.size
+
+		MyImage:
+			source: 'Img/route_text.png'
+			pos_hint: {"center_x": 0.5, "center_y": 0.9}
+			size_hint: 0.6, 0.6
+		
+		ArrowButton:
+			on_release: 
+				root.manager.transition.direction = "down"
+				root.manager.current = "choose_control"
+
+		GoButton:
+			source: 'Img/go.png'
+			pos_hint: {"center_x": 0.9, "center_y": 0.25}
+			size_hint: 0.2, 0.2
+			on_press: root.go()
+
+<DatabaseScreen>:
+	on_pre_leave: root.delete_all()
+	FloatLayout:
+		Background_IMG
+
+		ArrowButton:
+			pos_hint: {"center_x": 0.9, "center_y": 0.75}
+			on_release: 
+				root.manager.transition.direction = "left"
+				root.manager.current = "menu"
+
+		DatabaseImageButton:
+			source: 'Img/database.png'
+			pos_hint: {"center_x": 0.1, "center_y": 0.75}
+			size_hint: 0.15, 0.15
+			allow_stretch: False
+			keep_ratio: True	
+			on_release:
+				root.get_database()
+
+		TabbedPanel:
+			size_hint: .65, .65
+			pos_hint: {'center_x': .5, 'center_y': .5}
+			do_default_tab: False
+
+			TabbedPanelItem:
+				id: panel1
+				text: "SPEED"
+
+			TabbedPanelItem:
+				id: panel2
+				text: "DIRECTION"

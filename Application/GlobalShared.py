@@ -1,0 +1,10 @@
+wifi = False
+forward_back = 1
+speed = 0
+direction = 0
+left_arrow = 1
+right_arrow = 1
+points_array = []
+host = '192.168.100.3'
+port = 1313
+error = False

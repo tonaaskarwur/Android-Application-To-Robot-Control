@@ -8,7 +8,9 @@ The easiest way is to install the file myapp-0.1-debug.apk.
 
 If you want to change something in the code, you have to build the application again. The buildozer tool is used for this. Instruction on how to use the tool is available at this link [Buildozer](https://github.com/kivy/buildozer).
 
-**When building the application, replace the generated file *buildozer.spec* with the one from this repository. If you don't do this, the application will not work correctly.**
+**When building the application, replace the generated *buildozer.spec* file with the one from this repository. If you don't do this, the application will not work correctly.**
+
+**Use "Installing Buildozer with target Python 3" section. If you want to use Python 2 you delete python3crystax from requirements in *buildozer.spec* file**
 
 **To build the application use the Cython version == 0.25.2. It may not work with newer versions.**
 
@@ -31,6 +33,7 @@ In mobile appplication after pressing the WI-Fi logo, it is possible to connect 
 ### To build app
 
 * [Kivy](https://kivy.org/#home) - Library for development of applications
+* [Kivy-Garden](http://kivy-garden.github.io) - Project to centralize addons for Kivy maintained by users
 * [PyGame](https://www.pygame.org/news) - Library for making multimedia applications like games built on top of the SDL library
 * [Pillow](https://pillow.readthedocs.io/en/stable/) - Imaging Library
 * [Plyer](https://plyer.readthedocs.io/en/latest/#) - Library for accessing features of your hardware / platforms
