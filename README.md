@@ -2,6 +2,8 @@
 
 Android application to wireless robot control. The application is built in Python based on the kivy library. It allows you to control a mobile robot built specifically for this project. The application consists of the main menu, selection of control, manual control, control by draw a route for robot and a window for displaying the robot's speed and direction.
 
+![Robot](/Images/robot.png)
+
 ## Application build
 
 The easiest way is to install the file myapp-0.1-debug.apk.
