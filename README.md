@@ -6,7 +6,7 @@ Android application to wireless robot control. The application is built in Pytho
 
 ## Application build
 
-The easiest way is to install the file myapp-0.1-debug.apk.
+The easiest way is to install the file myapp.apk.
 
 If you want to change something in the code, you have to build the application again. The buildozer tool is used for this. Instruction on how to use the buildozer tool is available at this link [Buildozer](https://github.com/kivy/buildozer). Use "Installing Buildozer with target Python 3" section. If you want to use Python 2 you have to delete "python3crystax" from requirements in *buildozer.spec* file
 
