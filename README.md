@@ -42,7 +42,7 @@ In mobile appplication after pressing the WI-Fi logo, it is possible to connect 
 
 ### To run server on RaspberryPi
 
-* [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) - Package provides a class to control the GPIO on a Raspberry Pi.
+* [RPi.GPIO](https://pypi.org/project/RPi.GPIO/) - Package provides a class to control the GPIO on a Raspberry Pi
 * [netifaces](https://pypi.org/project/netifaces/) - Library to get the address(es) of the machine’s network interfaces from Python
 * [Numpy](http://www.numpy.org) - Package for scientific computing
 
